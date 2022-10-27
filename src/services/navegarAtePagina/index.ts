@@ -1,4 +1,4 @@
-export function navegarAtePagina(setadorEstado: any, caminho:string) {
+export function navegarAtePagina(navigate: any, caminho:string) {
   
-  setadorEstado(caminho);
+  navigate(caminho);
 }

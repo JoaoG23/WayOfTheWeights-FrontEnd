@@ -1,19 +1,20 @@
 import React from "react";
 import { ModalStyle, ModalBackgroundStyle } from "./styles";
 
-type Iinfo = {
+type Props = {
     children?: JSX.Element[] | JSX.Element;
   }
   
 // const [estado, setEstado] = useState();
 
-const ModalErro :React.FC<Iinfo> = ({
+const ModalErro :React.FC<Props> = ({
     children,
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                <img src="./assets/error.svg"></img>
-                <h4>Houve algum erro na operação </h4>
+                <img src="/assets/error.svg"></img>
+                <h3>Houve algum erro na operação </h3>
+                {children}
             </ModalStyle>
         </ModalBackgroundStyle>
 );

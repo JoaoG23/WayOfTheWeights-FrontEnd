@@ -1,9 +1,9 @@
 
 import { Red }  from './styles';
-type RedChildres = {
+type Props = {
     children?:any;
 }
-const RedFont:React.FC<RedChildres> = ({ children }) => {
+const RedFont:React.FC<Props> = ({children}) => {
     return(<Red>{children}</Red>)
 }
 

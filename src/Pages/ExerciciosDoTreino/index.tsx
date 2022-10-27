@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { Container } from "./styles";
+import { Link, useParams } from "react-router-dom";
+import { Container, AzulFont } from "./styles";
 
-import { buscaDadoUsuarioNaSessao } from "../../services/buscaDadoUsuarioNaSessao";
 import { useFetch } from "../../services/api";
 import { sumirDepoisTempo } from "../../services/sumirDepoisTempo";
 
-import { TreinoUsuario } from "../../types/TreinosUsuario";
+import { ExerciciosUsuario } from '../../types/ExerciciosUsuario';
 
 import Card from "../../Components/Card";
 import ModalCarregando from "../../Components/Modais/ModalCarregando";
@@ -14,16 +13,16 @@ import ModalErro from "../../Components/Modais/ModalErro";
 import LightButton from "../../Components/Buttons/LightButton";
 import DarkSquareButton from "../../Components/Buttons/DarkButtonSquare";
 
-const { idConvertido } = buscaDadoUsuarioNaSessao();
-const Treinos:React.FC = () => {
+const ExerciciosDoTreino:React.FC = () => {
 
-
+  const { id } = useParams();
+  
   const {
-    dados: treinos,
+    dados: exercicios,
     isCarregando,
     error,
     setError
-  } = useFetch<TreinoUsuario[]>(`/api/training/user/${idConvertido}`, {
+  } = useFetch<ExerciciosUsuario[]>(`/api/exercice/training/${id}`, {
     method: "get",
   });
   
@@ -39,22 +38,22 @@ const Treinos:React.FC = () => {
         </LightButton>
       </Link>
       <Container>
-        {treinos?.map((treino) => (
-          <Link to={`/exercicios-treino/${treino?.id}`} key={treino?.id}>
+        {exercicios?.map((exercicio) => (
+          <Link to={`/exercicio/${exercicio?.id}`} key={exercicio?.id}>
             <Card>
               <section>
-                <img src="./assets/bikeSmall.svg" alt="treino"></img>
-                <h3>{treino?.title}</h3>
-                <h5>{treino?.description}</h5>
+                <img src="/assets/machine.svg" alt="treino"></img>
+                <h4>{exercicio?.description}</h4>
+                <h3>Levantando <AzulFont>{exercicio?.weight} Kgs</AzulFont></h3>
               </section>
               <div>
                 <LightButton>
-                  <Link to={`/treino/deletar/${treino?.id}`}>
+                  <Link to={`/treino/deletar/${exercicio?.id}`}>
                   <h1>✖</h1>
                   </Link>
                 </LightButton>
                 <DarkSquareButton>
-                  <Link to={`/treino/${treino?.id}`}>
+                  <Link to={`/treino/${exercicio?.id}`}>
                     <h1>✎</h1>
                   </Link>
                 </DarkSquareButton>
@@ -65,7 +64,7 @@ const Treinos:React.FC = () => {
         {isCarregando && <ModalCarregando />}
         {error && (
           <ModalErro>
-            <h3>{error?.response?.data?.msg}</h3>
+            <p>{error?.response?.data?.msg}</p>
           </ModalErro>
         )}
       </Container>
@@ -73,4 +72,4 @@ const Treinos:React.FC = () => {
   );
 };
 
-export default Treinos;
+export default ExerciciosDoTreino;

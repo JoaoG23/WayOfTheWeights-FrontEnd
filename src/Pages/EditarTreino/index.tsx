@@ -1,26 +1,35 @@
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
-import { buscaDadoUsuarioNaSessao } from "../../services/buscaDadoUsuarioNaSessao";
 import { endpoint } from "../../services/endpoint";
 import { navegarAtePagina } from "../../services/navegarAtePagina";
+import { useFetch } from "../../services/api";
 
 import { SucessoResposta } from "../../types/Respostas/SucessoResposta";
 
-import { Container, Input, Form, InputHidden } from "./styles";
+import { Container, Input, Form } from "./styles";
 import ModalCarregando from "../../Components/Modais/ModalCarregando";
 import ModalErro from "../../Components/Modais/ModalErro";
 import DarkButton from "../../Components/Buttons/ButtonDark";
 import ModalSucesso from "../../Components/Modais/ModalSucesso";
 import RedFont from "../../Components/FontColor/RedFont";
+import { TreinoUsuario } from "../../types/TreinosUsuario";
 
-const AdicionarTreino: React.FC = () => {
+const EditarTreino: React.FC = () => {
   const navigate = useNavigate();
-
+  const { id } = useParams();
   const [sucesso, setSucesso] = useState<SucessoResposta | null>(null);
   const [isCarregando, setIsCarregando] = useState(false);
   const [error, setError] = useState<any | null>(null);
+
+  const {
+    dados: dadosAntigos,
+    isCarregando: isCarregandoDadosAntigos,
+    error: dadosAntigosError,
+  } = useFetch<TreinoUsuario>(`/api/training/${id}`, {
+    method: "get",
+  });
 
   const {
     register,
@@ -28,13 +37,12 @@ const AdicionarTreino: React.FC = () => {
     formState: { errors },
   } = useForm();
 
-  const { idConvertido } = buscaDadoUsuarioNaSessao();
-
-  async function adicionar(body:object) {
+  async function editar(body: object) {
     setIsCarregando(true);
     try {
-      const sucesso = await endpoint.post(`/api/training`, body);
+      const sucesso = await endpoint.put(`/api/training/${id}`, body);
       setSucesso(sucesso.data);
+      console.log(sucesso.data);
     } catch (error) {
       setError(error);
       console.log(error);
@@ -46,30 +54,17 @@ const AdicionarTreino: React.FC = () => {
     }
   }
 
-  //   {
-  // 	"title":"Treino B",
-  // 	"description":"Treinamento de Parte Posterior",
-  // 	"userId":1
-  // }
-
   return (
     <Container>
-      <Form
-        onSubmit={handleSubmit(async (body: object) => await adicionar(body))}
-      >
+      <Form onSubmit={handleSubmit(async (body: object) => await editar(body))}>
         <div>
-        <h2>Adicionar Treino</h2>
-        <p>Preenchar os dados abaixo para criar o seu treino</p>
+          <h2>Editar o {id}° treino</h2>
+          <p>Preenchar os dados abaixo para editar o seu treino</p>
         </div>
-        <InputHidden
-          type="number"
-          value={idConvertido}
-          placeholder={"Usuário"}
-          {...register("userId", { required: true })}
-        ></InputHidden>
         <Input
           type="text"
           placeholder={"Titulo do Treino"}
+          defaultValue={dadosAntigos?.title}
           {...register("title", { required: true })}
         ></Input>
         {errors.title?.type === "required" && (
@@ -78,6 +73,7 @@ const AdicionarTreino: React.FC = () => {
         <Input
           type="text"
           placeholder={"Descricão do treino"}
+          defaultValue={dadosAntigos?.description}
           {...register("description", { required: true })}
         ></Input>
         {errors.description?.type === "required" && (
@@ -85,15 +81,19 @@ const AdicionarTreino: React.FC = () => {
         )}
         <DarkButton>Salvar</DarkButton>
       </Form>
-      {sucesso && (
-        <ModalSucesso>
-          <h4>{sucesso?.msg}</h4>
-        </ModalSucesso>
+
+      {/* ---- Resposta da busca dos dados Antigos */}
+      {isCarregandoDadosAntigos && <ModalCarregando />}
+      {dadosAntigosError && (
+        <ModalErro>{dadosAntigosError?.response?.data?.msg}</ModalErro>
       )}
+
+      {/* ---- Resposta do Atualizacao */}
+      {sucesso && <ModalSucesso />}
       {isCarregando && <ModalCarregando />}
       {error && <ModalErro>{error?.response?.data?.msg}</ModalErro>}
     </Container>
   );
 };
 
-export default AdicionarTreino;
+export default EditarTreino;

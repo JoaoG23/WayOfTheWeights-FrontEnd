@@ -15,7 +15,7 @@ export const Dark = styled.button`
   padding: 0.5em;
   background-size: 200% 200%;
 
-  box-shadow: 0 0 2px gray;
+  box-shadow: 0 0 2px #323240;
 
   :hover{
 

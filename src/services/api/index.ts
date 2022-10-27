@@ -20,7 +20,7 @@ export const useFetch = <T = unknown>(url:string, options: AxiosRequestConfig) =
     .finally(() => {
       setIsCarregando(false);
     });
-  },[setDados])
+  },[])
   
   const refetch = () => {
     setIsCarregando(true);

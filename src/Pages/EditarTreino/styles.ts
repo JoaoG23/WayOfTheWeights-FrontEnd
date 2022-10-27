@@ -43,9 +43,6 @@ export const Form = styled.form`
   animation: entradaSuave 1s alternate forwards;
 
 `;
-export const InputHidden = styled.input`
-  visibility: hidden;
-`;
 export const Input = styled.input`
   border: none;
   padding: 4px;

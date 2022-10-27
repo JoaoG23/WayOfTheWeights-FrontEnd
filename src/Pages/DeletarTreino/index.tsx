@@ -33,7 +33,6 @@ const DeletarTreino: React.FC = () => {
       console.log(error);
     } finally {
       setIsCarregando(false);
-
       setTimeout(() => {
         navegarAtePagina(navigate, "/treino");
       }, 3000);
@@ -48,14 +47,20 @@ const DeletarTreino: React.FC = () => {
               deletar();
             }}
           >
-            Sim
+            <h1>Sim</h1>
           </LightButton>
           <Link to={"/treino"}>
-            <DarkSquareButton>Não</DarkSquareButton>
+            <DarkSquareButton>
+              <h1>Não</h1>
+            </DarkSquareButton>
           </Link>
         </div>
       </ModalQuestiomento>
-      {sucesso && <ModalSucesso />}
+      {sucesso && (
+        <ModalSucesso>
+          <h4>{sucesso?.msg}</h4>
+        </ModalSucesso>
+      )}
       {error && <ModalErro />}
       {isCarregando && <ModalCarregando />}
     </Container>

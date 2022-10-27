@@ -1,9 +1,7 @@
 export type ErrorResposta = {
-    error?:{
-        response?:{
-            data?:{
-                msg?:string;
-            }
-        }
-    }
-}
+  response?: {
+    data?: {
+      msg?: string;
+    };
+  };
+};

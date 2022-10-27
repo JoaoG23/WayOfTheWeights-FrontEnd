@@ -1,18 +1,18 @@
 import React from "react";
 import { ModalStyle, ModalBackgroundStyle } from "./styles";
 
-type Iinfo = {
+type Props = {
     children?: JSX.Element[] | JSX.Element;
   }
   
 
-const ModalQuestiomento :React.FC<Iinfo> = ({
+const ModalQuestiomento :React.FC<Props> = ({
     children,
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                <img src="./assets/question.svg"></img>
-                <h3>Tem certeza que quer realizar a operacão</h3>
+                <img src="/assets/question.svg"></img>
+                <h4>Tem certeza que quer realizar a operacão</h4>
                 { children }
             </ModalStyle>
         </ModalBackgroundStyle>

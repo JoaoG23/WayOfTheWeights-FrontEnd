@@ -13,4 +13,10 @@ export const Container = styled.main`
   }
 `;
 
+export const AzulFont = styled.b`
+  color: #20e5e0;
+`;
+
+
+
 

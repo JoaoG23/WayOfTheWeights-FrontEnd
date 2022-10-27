@@ -46,6 +46,11 @@ export const ModalStyle = styled.div`
   border-radius: 25px;
   box-shadow: 2px 2px 5px #00000050;
 
+  div{
+    display: flex;
+    gap: 0.5em;
+  }
+
   @media screen and (max-width:769px) {
     width:90vw;
   }
