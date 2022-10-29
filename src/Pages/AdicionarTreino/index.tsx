@@ -46,12 +46,6 @@ const AdicionarTreino: React.FC = () => {
     }
   }
 
-  //   {
-  // 	"title":"Treino B",
-  // 	"description":"Treinamento de Parte Posterior",
-  // 	"userId":1
-  // }
-
   return (
     <Container>
       <Form

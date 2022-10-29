@@ -3,20 +3,24 @@ import { Container } from "./styles";
 
 import { buscaDadoUsuarioNaSessao } from "../../services/buscaDadoUsuarioNaSessao";
 import { useFetch } from "../../services/api";
+import { sumirDepoisTempo } from "../../services/sumirDepoisTempo";
 
 import { TreinamentoUsuarioLogado } from "../../types/TreinamentoUsuarioLogado";
-import ModalSucesso from "../../Components/Modais/ModalSucesso";
 import ModalCarregando from "../../Components/Modais/ModalCarregando";
 import ModalErro from "../../Components/Modais/ModalErro";
 
 const { idConvertido } = buscaDadoUsuarioNaSessao();
 const Dashboard = () => {
-  const { dados, isCarregando, error } = useFetch<TreinamentoUsuarioLogado>(
+  const { dados, isCarregando, error, setError } = useFetch<TreinamentoUsuarioLogado>(
     `/api/statistics/lastexercice/${idConvertido}`,
     {
       method: "get",
     }
   );
+
+  if (error) {
+    sumirDepoisTempo(setError);
+  }
 
   return (
     <Container>

@@ -17,10 +17,10 @@ import ModalErro from "../../Components/Modais/ModalErro";
 
 // Services
 import { endpoint } from "../../services/endpoint";
-import { inserirDadosUsuarioNaSessao } from "../../services/inserirDadosUsuarioNaSessao";
+import RedFont from "../../Components/FontColor/RedFont";
 // Tipagens
 
-const Login: React.FC = () => {
+const Registrarse: React.FC = () => {
 
   const navigate = useNavigate();
   // Auxiliars
@@ -31,7 +31,7 @@ const Login: React.FC = () => {
   }
   function navegarAtePagina(caminho: string) {
     setTimeout(() => {
-        window.location.assign(caminho);
+      window.location.assign(caminho);
     }, 3000);
   }
 
@@ -39,19 +39,15 @@ const Login: React.FC = () => {
   const [isCarregando, setIsCarregando] = useState(false);
   const [error, setError] = useState<any | null>(null);
 
-  async function login(data: object) {
+  async function registrar(data: object) {
     setIsCarregando(true);
     try {
-      const response = await endpoint.post("/api/auth/login", data);
+      const response = await endpoint.post("/api/auth/register", data);
 
       setDados(response.data);
 
-      const { tokenUser, userData } = response.data;
-      inserirDadosUsuarioNaSessao(userData.id, userData.name, tokenUser);
-
       sumirModais(setDados);
-      navegarAtePagina('/dashboard');
-
+      navegarAtePagina("/");
     } catch (error) {
       setError(error);
       sumirModais(setError);
@@ -75,15 +71,25 @@ const Login: React.FC = () => {
           <img width={"200px"} src="./assets/logo.png"></img>
         </div>
         <Form
-          onSubmit={handleSubmit(async (body: object) => await login(body))}
+          onSubmit={handleSubmit(
+            async (body: object) => await registrar(body)
+          )}
         >
+          <Input
+            type="text"
+            placeholder={"Seu nome"}
+            {...register("name", { required: true })}
+          ></Input>
+          {errors.name?.type === "required" && (
+            <RedFont>O nome está vazio! Preencha por por gentileza</RedFont>
+          )}
           <Input
             type="text"
             placeholder={"Usuário"}
             {...register("userName", { required: true })}
           ></Input>
           {errors.userName?.type === "required" && (
-            <p>Usuario vazio! Preencha por por gentileza</p>
+            <RedFont>Usuario vazio! Preencha por por gentileza</RedFont>
           )}
           <Input
             type="password"
@@ -91,20 +97,37 @@ const Login: React.FC = () => {
             {...register("password", { required: true })}
           ></Input>
           {errors.password?.type === "required" && (
-            <p>Senha vazia! Preencha por por gentileza</p>
+            <RedFont>Senha vazia! Preencha por por gentileza</RedFont>
           )}
-          <DarkButton>login</DarkButton>
+          
+          <Input
+            type="text"
+            placeholder={"Seu Telefone"}
+            {...register("phonenumber", { required: true })}
+          ></Input>
+          {errors.phonenumber?.type === "required" && (
+            <RedFont>O telefone está vazio! Preencha por por gentileza</RedFont>
+          )}
+          <Input
+            type="text"
+            placeholder={"Seu e-mail"}
+            {...register("email", { required: true })}
+          ></Input>
+          {errors.email?.type === "required" && (
+            <RedFont>O e-mail está vazio! Preencha por por gentileza</RedFont>
+          )}
+          <DarkButton>Registrar</DarkButton>
         </Form>
         <RegisterContainer>
           {dados && <ModalSucesso>{dados?.msg}</ModalSucesso>}
           {isCarregando && <ModalCarregando />}
           {error && <ModalErro>{error?.response?.data?.msg}</ModalErro>}
-          <p>Caso ainda não tenha conta</p>
-          <DarkButton onClick={ () => navigate('/registrar') }>Registrar-se</DarkButton>
+          <p>Para clique para voltar</p>
+          <DarkButton onClick={ () => navigate('/')}>Voltar</DarkButton>
         </RegisterContainer>
       </LoginContainer>
     </ContainerMain>
   );
 };
 
-export default Login;
+export default Registrarse;

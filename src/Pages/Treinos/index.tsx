@@ -13,6 +13,7 @@ import ModalCarregando from "../../Components/Modais/ModalCarregando";
 import ModalErro from "../../Components/Modais/ModalErro";
 import LightButton from "../../Components/Buttons/LightButton";
 import DarkSquareButton from "../../Components/Buttons/DarkButtonSquare";
+import TextLimited from '../../Components/TextLimited';
 
 const { idConvertido } = buscaDadoUsuarioNaSessao();
 const Treinos:React.FC = () => {
@@ -45,7 +46,7 @@ const Treinos:React.FC = () => {
               <section>
                 <img src="./assets/bikeSmall.svg" alt="treino"></img>
                 <h3>{treino?.title}</h3>
-                <h5>{treino?.description}</h5>
+                <TextLimited>{treino?.description}</TextLimited>
               </section>
               <div>
                 <LightButton>

@@ -15,6 +15,12 @@ const Sidebar: React.FC = () => {
           </Link>
         </Item>
       ))}
+        <Item >
+          <Link to={'/'}>
+            <img src={'./assets/icons/sidebar-icons/logout.svg'} alt="gym"></img>
+            <p>logout</p>
+          </Link>
+        </Item>
     </Container>
   );
 };

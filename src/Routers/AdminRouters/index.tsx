@@ -1,8 +1,12 @@
 import { Route, Routes } from "react-router-dom";
+import AdicionarExercicio from "../../Pages/AdicionarExercicio";
 import AdicionarTreino from "../../Pages/AdicionarTreino";
-import Dashboard from '../../Pages/Dashboard'
+import Dashboard from "../../Pages/Dashboard";
+import DeletarExercicio from "../../Pages/DeletarExercicio";
 import DeletarTreino from "../../Pages/DeletarTreino";
+import EditarExercicio from "../../Pages/EditarExercicio";
 import EditarTreino from "../../Pages/EditarTreino";
+import EditarUsuario from "../../Pages/EditarUsuario";
 import Exercicio from "../../Pages/Exercicio";
 import ExerciciosDoTreino from "../../Pages/ExerciciosDoTreino";
 import Treinos from "../../Pages/Treinos";
@@ -60,10 +64,10 @@ const AdminRouters = () => {
         }
       />
       <Route
-        path="/exercicio/adicionar"
+        path="/exercicio/adicionar/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
-            <ExerciciosDoTreino />
+            <AdicionarExercicio />
           </PrivateRoute>
         }
       />
@@ -79,7 +83,7 @@ const AdminRouters = () => {
         path="/exercicio/editar/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
-            <ExerciciosDoTreino />
+            <EditarExercicio />
           </PrivateRoute>
         }
       />
@@ -87,14 +91,18 @@ const AdminRouters = () => {
         path="/exercicio/deletar/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
-            <ExerciciosDoTreino />
+            <DeletarExercicio />
           </PrivateRoute>
         }
       />
-      {/* <Route
-        path="/dashboard"
-        element={<Dashboard />}
-      /> */}
+      <Route
+        path="/usuario-logado"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <EditarUsuario />
+          </PrivateRoute>
+        }
+      />
       <Route path="*" element={<h1> Not found the page 404</h1>} />
     </Routes>
   );

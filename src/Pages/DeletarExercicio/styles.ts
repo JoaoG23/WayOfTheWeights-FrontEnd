@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.main`
   padding: 10px;
   display: grid;
-  grid-auto-rows: min-content;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: max-content;
+  grid-template-columns: auto auto auto;
   gap: 10px;
   animation: entradaSuave 0.8s;
 
@@ -12,11 +12,5 @@ export const Container = styled.main`
     grid-template-columns: auto ;
   }
 `;
-
-export const AzulFont = styled.b`
-  color: #20e5e0;
-`;
-
-
 
 

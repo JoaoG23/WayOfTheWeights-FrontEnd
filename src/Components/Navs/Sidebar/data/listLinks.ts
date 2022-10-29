@@ -16,11 +16,5 @@ export const linkes = [
     descricao: "Pesos",
     icon: "./assets/icons/sidebar-icons/pesos.svg",
     path: "/pesos",
-  },
-  {
-    id: 3,
-    descricao: "Logout",
-    icon: "./assets/icons/sidebar-icons/logout.svg",
-    path: "/",
-  },
+  }
 ];

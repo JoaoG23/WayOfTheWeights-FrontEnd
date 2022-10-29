@@ -12,5 +12,12 @@ export const Container = styled.main`
     grid-template-columns: auto ;
   }
 `;
+export const TextLimited = styled.h5`
+
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
 
 
