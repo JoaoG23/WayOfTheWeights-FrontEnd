@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -18,10 +18,10 @@ import ModalErro from "../../Components/Modais/ModalErro";
 // Services
 import { endpoint } from "../../services/endpoint";
 import { inserirDadosUsuarioNaSessao } from "../../services/inserirDadosUsuarioNaSessao";
+import RedFont from "../../Components/FontColor/RedFont";
 // Tipagens
 
 const Login: React.FC = () => {
-
   const navigate = useNavigate();
   // Auxiliars
   function sumirModais(setadorModais: any) {
@@ -31,7 +31,7 @@ const Login: React.FC = () => {
   }
   function navegarAtePagina(caminho: string) {
     setTimeout(() => {
-        window.location.assign(caminho);
+      window.location.assign(caminho);
     }, 3000);
   }
 
@@ -50,8 +50,7 @@ const Login: React.FC = () => {
       inserirDadosUsuarioNaSessao(userData.id, userData.name, tokenUser);
 
       sumirModais(setDados);
-      navegarAtePagina('/dashboard');
-
+      navegarAtePagina("/dashboard");
     } catch (error) {
       setError(error);
       sumirModais(setError);
@@ -69,10 +68,9 @@ const Login: React.FC = () => {
   } = useForm();
   return (
     <ContainerMain>
-      <div></div>
       <LoginContainer>
         <div>
-          <img width={"200px"} src="./assets/logo.png"></img>
+          <img width={"200px"} src="./assets/logo.png" alt="logo"></img>
         </div>
         <Form
           onSubmit={handleSubmit(async (body: object) => await login(body))}
@@ -83,7 +81,7 @@ const Login: React.FC = () => {
             {...register("userName", { required: true })}
           ></Input>
           {errors.userName?.type === "required" && (
-            <p>Usuario vazio! Preencha por por gentileza</p>
+            <RedFont>Usuario vazio! Preencha por por gentileza</RedFont>
           )}
           <Input
             type="password"
@@ -91,7 +89,7 @@ const Login: React.FC = () => {
             {...register("password", { required: true })}
           ></Input>
           {errors.password?.type === "required" && (
-            <p>Senha vazia! Preencha por por gentileza</p>
+            <RedFont>Senha vazia! Preencha por por gentileza</RedFont>
           )}
           <DarkButton>login</DarkButton>
         </Form>
@@ -99,10 +97,13 @@ const Login: React.FC = () => {
           {dados && <ModalSucesso>{dados?.msg}</ModalSucesso>}
           {isCarregando && <ModalCarregando />}
           {error && <ModalErro>{error?.response?.data?.msg}</ModalErro>}
-          <p>Caso ainda não tenha conta</p>
-          <DarkButton onClick={ () => navigate('/registrar') }>Registrar-se</DarkButton>
+          <Link to={"/esqueci-senha"}>Esqueceu seu senha? Clique aqui</Link>
+          <DarkButton onClick={() => navigate("/registrar")}>
+            Registrar-se
+          </DarkButton>
         </RegisterContainer>
       </LoginContainer>
+        <img  src="./assets/img-login.jpg" alt="logo"></img>
     </ContainerMain>
   );
 };

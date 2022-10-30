@@ -1,5 +1,4 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
 
 import AdminRouters from "./Routers/AdminRouters";
 import InicialRouters from "./Routers/InicialRouters";

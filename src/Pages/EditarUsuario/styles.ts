@@ -6,6 +6,7 @@ export const Container = styled.main`
   justify-content: center;
   align-items: center;
 
+
   @media screen and (max-width: 800px) {
     display: block;
   }
@@ -33,6 +34,7 @@ export const Form = styled.form`
   border-radius: 15px;
 
   a{
+    color: #000;
     text-decoration: none;
   }
   

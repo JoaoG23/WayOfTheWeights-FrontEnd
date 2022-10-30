@@ -11,7 +11,7 @@ const ModalQuestiomento :React.FC<Props> = ({
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                <img src="/assets/question.svg"></img>
+                <img src="/assets/question.svg" alt="question"></img>
                 <h4>Tem certeza que quer realizar a operacão</h4>
                 { children }
             </ModalStyle>

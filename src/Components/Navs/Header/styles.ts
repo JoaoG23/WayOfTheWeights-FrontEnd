@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 80vw;
-  height: 5vh;
+  width: 90vw;
+  height: 6vh;
 
   border-radius: 2em;
   display: flex;
@@ -26,6 +26,17 @@ export const Container = styled.div`
   }
 `;
 
+export const TextLimited = styled.p`
+  width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media only screen and (max-width: 768px) {
+    width: 50px;
+  }
+`;
+
 export const ImageContainer = styled.div`
   border-radius: 2em;
   display: flex;
@@ -45,5 +56,10 @@ export const ImageContainer = styled.div`
       background-color: #0000003f;
       transform: translateX(1vw);
     }
+  }
+`;
+export const VoltarText = styled.p`
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
 `;

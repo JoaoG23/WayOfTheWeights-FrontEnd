@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  font-size: small;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,10 +10,14 @@ export const Form = styled.form`
   height: 50vh;
   padding: 20px;
   gap: 10px;
-
   text-align: center;
-
   border-radius: 15px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0px;
+    margin: 0px;
+    /* gap:1px;     */
+  }
 
   a {
     text-decoration: none;
@@ -28,7 +31,6 @@ export const Form = styled.form`
 `;
 
 export const LoginContainer = styled.main`
-  /* position: fixed; */
   width: auto;
   display: grid;
   grid-template-columns: auto;
@@ -62,13 +64,24 @@ export const ContainerMain = styled.main`
   /* z-index: 1; */
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
   flex-wrap: wrap;
-  background-color: #323240;
+  background-image: url('./assets/img-login.jpg');
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-position: center;
+  background-size: cover;
 
   position: fixed;
   top: 0;
-  z-index: 0;
+  z-index: 2;
   align-items: center;
+  @media only screen and (max-width: 768px) {
+    background-image: none;
+    display: block;
+    background-color:#DCFC34;
+  }
+  
 `;
 
 export const Input = styled.input`

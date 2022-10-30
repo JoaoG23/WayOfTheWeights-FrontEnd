@@ -29,30 +29,30 @@ const Dashboard = () => {
           <h2>Último exercicio de evolução</h2>
           <h4>{dados?.exercice_name}</h4>
         </div>
-        <img src="./assets/aguaBig.svg"></img>
+        <img src="./assets/aguaBig.svg" alt="agua"></img>
       </Card>
       <Card>
         <div>
           <h2>Último exercicio de evolução</h2>
           <h4>{dados?.exercice_name}</h4>
         </div>
-        <img src="./assets/bikeBig.svg"></img>
+        <img src="./assets/bikeBig.svg" alt="bike"></img>
       </Card>
       <Card>
         <div>
           <h2>Aumento de Peso</h2>
-          <img src="./assets/muscleBig.svg"></img>
+          <img src="./assets/muscleBig.svg" alt="muscle"></img>
         </div>
         <div>
           <h4>Foi de {dados?.pound} Kgs</h4>
-          <img src="./assets/up.svg"></img>
+          <img src="./assets/up.svg" alt="ganho"></img>
           <h5>Foi de {dados?.pound} Kgs</h5>
         </div>
       </Card>
       {isCarregando && <ModalCarregando />}
       {error && (
         <ModalErro>
-          <h4>Houve um erro ou faça login novamente</h4>
+          <p>Talvez tenha algum erro ou você não tem nada cadastrado ainda!</p>
         </ModalErro>
       )}
     </Container>

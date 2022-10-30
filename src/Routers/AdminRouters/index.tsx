@@ -4,11 +4,13 @@ import AdicionarTreino from "../../Pages/AdicionarTreino";
 import Dashboard from "../../Pages/Dashboard";
 import DeletarExercicio from "../../Pages/DeletarExercicio";
 import DeletarTreino from "../../Pages/DeletarTreino";
+import DeletarUsuario from "../../Pages/DeletarUsuario";
 import EditarExercicio from "../../Pages/EditarExercicio";
 import EditarTreino from "../../Pages/EditarTreino";
 import EditarUsuario from "../../Pages/EditarUsuario";
 import Exercicio from "../../Pages/Exercicio";
 import ExerciciosDoTreino from "../../Pages/ExerciciosDoTreino";
+import PesosUtilizados from "../../Pages/Pesos";
 import Treinos from "../../Pages/Treinos";
 import PrivateRoute from "../Auth/PrivateRouter";
 
@@ -100,6 +102,22 @@ const AdminRouters = () => {
         element={
           <PrivateRoute redirectTo={"/"}>
             <EditarUsuario />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/usuario-logado/deletar"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <DeletarUsuario />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/pesos"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <PesosUtilizados/>
           </PrivateRoute>
         }
       />

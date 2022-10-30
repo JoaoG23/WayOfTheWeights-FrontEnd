@@ -8,6 +8,12 @@ export const Container = styled.main`
   gap: 10px;
   animation: entradaSuave 0.8s;
 
+  @media screen and (max-width: 1300px ) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 1024px ) {
+    grid-template-columns: 1fr;
+  }
   @media screen and (max-width: 800px ) {
     grid-template-columns: auto ;
   }

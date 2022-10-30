@@ -5,14 +5,13 @@ type Props = {
     children?: JSX.Element[] | JSX.Element;
   }
   
-// const [estado, setEstado] = useState();
 
 const ModalSucesso :React.FC<Props> = ({
     children,
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                <img src="/assets/success.svg"></img>
+                <img src="/assets/success.svg" alt="success"></img>
                 <h3>Operação concluida com sucesso</h3>
                 {children}
             </ModalStyle>

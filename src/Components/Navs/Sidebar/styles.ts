@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
  width: 80px;
  height: 100vh;
-
+ 
  position: absolute;
  left: 0px;
-
+ 
  display: flex;
  flex-direction: column;
  gap:1em;
@@ -14,6 +14,18 @@ export const Container = styled.div`
 
  background-color: #dcfc34;
  box-shadow: 2px 2px 4px #00000027;
+
+ @media only screen and (max-width: 768px) {
+    padding: 0px;
+
+    position: fixed;
+    margin: 0px;
+    width: 100vw;
+    bottom: 0;
+    height: 80px;
+    z-index: 1;
+    flex-direction: row;
+  }
 `
 export const Item = styled.div`
     display: flex;

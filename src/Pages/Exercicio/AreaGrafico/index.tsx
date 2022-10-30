@@ -1,98 +1,83 @@
 import React from "react";
-import { options } from "./data/options";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
-  Filler,
-  Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-import { Area } from "./styles";
-
-import { HistoricoExercicio } from "../../../types/HistoricoExercicio";
-
+  ResponsiveContainer,
+  Label,
+} from "recharts";
 import { useFetch } from "../../../services/api";
-import { sumirDepoisTempo } from "../../../services/sumirDepoisTempo";
-import { retirarSegundosTimestamp } from "../../../services/retirarSegundosTimestamp";
 
 import ModalCarregando from "../../../Components/Modais/ModalCarregando";
 import ModalErro from "../../../Components/Modais/ModalErro";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend
-);
+import { HistoricoExercicio } from "../../../types/HistoricoExercicio";
 
 type Props = {
-  idUsuario?: string | number;
-  idExercices?: string | number;
+  userId?: number | string;
+  exerciceId?: number | string;
 };
-
-export const AreaGraficoMostraUltima3Evolucoes: React.FC<Props> = ({
-  idUsuario,
-  idExercices,
-}) => {
+const AreaGrafico: React.FC<Props> = ({ userId, exerciceId }) => {
   const {
-    dados: estatisticas,
-    isCarregando: isCarregandoEstatisticas,
-    error: estatisticasError,
-    setError: serErrorEstatistica,
-  } = useFetch<any>(`/api/statistics/lastthree`, {
+    dados: exercicios,
+    isCarregando,
+    error,
+    setError,
+  } = useFetch<HistoricoExercicio[] | any>(`/api/statistics/lastthree`, {
     method: "get",
     params: {
-      userId: idUsuario,
-      exerciceId: idExercices,
+      userId: userId,
+      exerciceId: exerciceId,
     },
   });
 
-  const datasAlteracao = estatisticas?.map((dados: HistoricoExercicio) => {
-    let semSegundos = retirarSegundosTimestamp(dados?.dateInsert);
-    return semSegundos;
-  });
-
-  const pesos = estatisticas?.map((dados: HistoricoExercicio) => {
-    return dados?.pound;
-  });
-
-  if (estatisticasError) {
-    sumirDepoisTempo(serErrorEstatistica);
+  if (error) {
+    setError(null);
   }
 
-  const data = {
-    labels: datasAlteracao,
-    datasets: [
-      {
-        fill: true,
-        data: pesos,
-        borderColor: "#20E5E0",
-        backgroundColor: "#20E5E0",
-      },
-    ],
-  };
   return (
     <>
-      {/* Dados Graficos */}
-      {isCarregandoEstatisticas && <ModalCarregando />}
-      {estatisticasError && (
+      {error && (
         <ModalErro>
-          <h4>Provalmente houver um erro ou não tem histórico de pesos</h4>
-          <p>{estatisticasError?.response?.data?.msg}</p>
+          <p> Ou não tem dados a ser apresentado ou houve outro erro</p>
         </ModalErro>
       )}
-      <Area>
-        <Line options={options} data={data} />
-      </Area>
+      {isCarregando && <ModalCarregando />}
+      <ResponsiveContainer width="80%" aspect={1}>
+        <AreaChart
+          width={500}
+          height={400}
+          data={exercicios}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="dateInsert" stroke="white" angle={20} />
+          <YAxis stroke="white">
+            <Label
+              value="Kilos"
+              angle={-90}
+              fill="white"
+              offset={0}
+              position="center"
+            />
+          </YAxis>
+          <Tooltip />
+          <Area
+            dataKey="pound"
+            stroke="#20e5e0"
+            fill="#20e5e0"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     </>
   );
 };
+
+export default AreaGrafico;

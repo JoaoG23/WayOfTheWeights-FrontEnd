@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
+
 export const Form = styled.form`
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,17 +13,14 @@ export const Form = styled.form`
   padding: 20px;
   gap: 10px;
 
+
   text-align: center;
 
   border-radius: 15px;
-  
-  a {
+
+  a{
     text-decoration: none;
   }
-  a:hover {
-    transition: .3s;
-  }
-
   animation: entradaSuave 1s alternate forwards;
   @media only screen and (max-width: 768px) {
     padding: 0px;
@@ -30,36 +29,36 @@ export const Form = styled.form`
 `;
 
 export const LoginContainer = styled.main`
-  width: auto;
-  display: grid;
-  grid-template-columns: auto;
-  justify-items: center;
-  align-items: flex-end;
-  height: 100vh;
-  background-color: #dcfc34;
 
+width: auto;
+display: grid;
+grid-template-columns: auto;
+justify-items: center;
+align-items: flex-end;
+height: 100vh;
+background-color: #dcfc34;
+
+@media only screen and (max-width: 768px)  {
+  
+}
 `;
+
+
 
 export const FormContainer = styled.form`
-  display: grid;
-  grid-template-columns: auto;
-  justify-items: center;
-  background-color: #dcfc34;
 
+
+display: grid;
+grid-template-columns: auto;
+justify-items: center;
+background-color: #dcfc34;
 `;
 export const RegisterContainer = styled.div`
-  height: 70px;
+height: 70px;
 
-  a {
-    color: #000;
-  }
-  a:hover {
-    transition: 0.3s ease-in;
-    color: #5d5858c8;
-  }
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
+gap: 10px;
+display: flex;
+flex-direction: column;
 `;
 
 export const ContainerMain = styled.main`
@@ -95,7 +94,9 @@ export const Input = styled.input`
   background-color: transparent;
   border-bottom: 1px solid var(--dark);
 
-  :focus {
+
+  :focus{
+    
     animation-name: toRight;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -105,12 +106,13 @@ export const Input = styled.input`
   }
 
   @keyframes toRight {
-    0% {
-      transform: translateX(0vw);
-    }
-
-    100% {
-      transform: translateX(1vw);
-    }
+  0%   {
+    transform: translateX(0vw);
   }
+  
+  100% {
+    transform: translateX(1vw);
+  }
+}
+
 `;

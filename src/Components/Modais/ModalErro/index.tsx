@@ -5,15 +5,14 @@ type Props = {
     children?: JSX.Element[] | JSX.Element;
   }
   
-// const [estado, setEstado] = useState();
 
 const ModalErro :React.FC<Props> = ({
     children,
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                <img src="/assets/error.svg"></img>
-                <h3>Houve algum erro na operação </h3>
+                <img src="/assets/error.svg" alt="error"></img>
+                <h2>Ops! Há algo errado na operação</h2>
                 {children}
             </ModalStyle>
         </ModalBackgroundStyle>

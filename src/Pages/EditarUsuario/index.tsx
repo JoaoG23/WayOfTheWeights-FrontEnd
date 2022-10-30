@@ -67,7 +67,7 @@ const EditarUsuario: React.FC = () => {
           type="text"
           placeholder={"Seu nome"}
           defaultValue={dadosAntigos?.name}
-          {...register("name", { required: true })}
+          {...register("name", { required: false })}
         ></Input>
         {errors.name?.type === "required" && (
           <RedFont>Seu nome está vazio! Preencha por gentileza</RedFont>
@@ -76,7 +76,7 @@ const EditarUsuario: React.FC = () => {
           type="text"
           placeholder={"Seu email"}
           defaultValue={dadosAntigos?.email}
-          {...register("email", { required: true })}
+          {...register("email", { required: false })}
         ></Input>
         {errors.email?.type === "required" && (
           <RedFont>E-mail está vazio! Preencha por gentileza</RedFont>
@@ -85,7 +85,7 @@ const EditarUsuario: React.FC = () => {
           type="text"
           placeholder={"Seu número de Telefone"}
           defaultValue={dadosAntigos?.phonenumber}
-          {...register("phonenumber", { required: true })}
+          {...register("phonenumber", { required: false })}
         ></Input>
         {errors.phonenumber?.type === "required" && (
           <RedFont>Telefone está vazio! Preencha por gentileza</RedFont>
@@ -94,12 +94,13 @@ const EditarUsuario: React.FC = () => {
           type="text"
           placeholder={"Seu Usuário para login"}
           defaultValue={dadosAntigos?.userName}
-          {...register("userName", { required: true })}
+          {...register("userName", { required: false })}
         ></Input>
         {errors.userName?.type === "required" && (
           <RedFont>Seu usuário está vazio! Preencha por gentileza</RedFont>
         )}
         <DarkButton>Salvar</DarkButton>
+        {/* <Link to={'/usuario-logado/deletar'}>Encerrar Conta</Link> */}
       </Form>
 
       {/* ---- Resposta da busca dos dados Antigos */}

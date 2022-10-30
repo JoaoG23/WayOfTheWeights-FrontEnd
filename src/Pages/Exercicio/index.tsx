@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Container, CardAzul } from "./styles";
-import Card from "../../Components/Card";
+import { Container, CardAzul, ContainerGrafico } from "./styles";
+
 import ModalCarregando from "../../Components/Modais/ModalCarregando";
 import ModalErro from "../../Components/Modais/ModalErro";
 
@@ -10,13 +10,12 @@ import { sumirDepoisTempo } from "../../services/sumirDepoisTempo";
 import { buscaDadoUsuarioNaSessao } from "../../services/buscaDadoUsuarioNaSessao";
 
 import { ExerciciosUsuario } from "../../types/ExerciciosUsuario";
-import { AreaGraficoMostraUltima3Evolucoes } from "./AreaGrafico";
+import AreaGraficoMostraUltima3Evolucoes from "./AreaGrafico";
 
 const Exercicio: React.FC = () => {
-  const { idConvertido } = buscaDadoUsuarioNaSessao();
-  const idUsuario = String(idConvertido);
-
   const { id } = useParams();
+  const { idConvertido } = buscaDadoUsuarioNaSessao();
+
   const {
     dados: exercicio,
     isCarregando: isCarregandoExercicios,
@@ -40,12 +39,15 @@ const Exercicio: React.FC = () => {
         </div>
         <img src="/assets/pesosColor.svg" alt="pesos"></img>
       </CardAzul>
-      <Card>
-        <AreaGraficoMostraUltima3Evolucoes
-          idUsuario={idUsuario}
-          idExercices={id}
-        ></AreaGraficoMostraUltima3Evolucoes>
-      </Card>
+      <ContainerGrafico>
+        <h3>Evolução dos Pesos</h3>
+        <div>
+          <AreaGraficoMostraUltima3Evolucoes
+            userId={idConvertido}
+            exerciceId={id}
+          />
+        </div>
+      </ContainerGrafico>
 
       {/* Dados Exercicio */}
       {isCarregandoExercicios && <ModalCarregando />}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import { Container, ImageContainer } from "./styles";
+import { Container, ImageContainer, VoltarText, TextLimited } from "./styles";
 import { buscaDadoUsuarioNaSessao } from "../../../services/buscaDadoUsuarioNaSessao";
 import { limparSessaoUsuario } from "../../../services/limparSessaoUsuario";
 
@@ -10,22 +10,26 @@ const Header: React.FC = () => {
 
   const navigate = useNavigate();
   function voltarPaginaAnterior() {
-    navigate(-1);
+    // navigate("/dashboard");
+    window.history.back();
   }
   return (
     <Container>
       <Link to={"/usuario-logado"}>
         <ImageContainer>
           <img src="./assets/icons/header-icons/person.svg" alt="perfil"></img>
-          <p>{nomeUsuario}</p>
+          <TextLimited>{nomeUsuario}</TextLimited>
         </ImageContainer>
       </Link>
       <p>Wow</p>
-      <ImageContainer role={"button"} onClick={ () => {
-        voltarPaginaAnterior();
-        limparSessaoUsuario();
-      }}>
-        <p>Voltar</p>
+      <ImageContainer
+        role={"button"}
+        onClick={() => {
+          voltarPaginaAnterior();
+          limparSessaoUsuario();
+        }}
+      >
+        <VoltarText>Voltar</VoltarText>
         <img src="./assets/icons/header-icons/voltar.svg" alt="voltar"></img>
       </ImageContainer>
     </Container>

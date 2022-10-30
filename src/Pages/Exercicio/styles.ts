@@ -11,9 +11,11 @@ export const Container = styled.main`
   gap: 10px;
   animation: entradaSuave 0.8s;
   
+  
   @media screen and (max-width: 800px ) {
     width: 70%;
   }
+
 `;
 export const CardAzul = styled.div`
 
@@ -28,6 +30,18 @@ export const CardAzul = styled.div`
 
   @media screen and (max-width: 800px ) {
     grid-template-columns: auto ;
+  }
+`;
+export const ContainerGrafico = styled.div`
+  
+  border:none;
+
+  padding: 1.5em;
+  border-radius: .8em;
+  background-color: #636573;
+
+
+  @media screen and (max-width: 800px ) {
   }
 `;
 
