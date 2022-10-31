@@ -3,15 +3,13 @@ import { useNavigate, Link } from "react-router-dom";
 
 import { Container, ImageContainer, VoltarText, TextLimited } from "./styles";
 import { buscaDadoUsuarioNaSessao } from "../../../services/buscaDadoUsuarioNaSessao";
-import { limparSessaoUsuario } from "../../../services/limparSessaoUsuario";
 
 const Header: React.FC = () => {
   const { nomeUsuario } = buscaDadoUsuarioNaSessao();
 
   const navigate = useNavigate();
   function voltarPaginaAnterior() {
-    // navigate("/dashboard");
-    window.history.back();
+    navigate(-1);
   }
   return (
     <Container>
@@ -26,7 +24,6 @@ const Header: React.FC = () => {
         role={"button"}
         onClick={() => {
           voltarPaginaAnterior();
-          limparSessaoUsuario();
         }}
       >
         <VoltarText>Voltar</VoltarText>

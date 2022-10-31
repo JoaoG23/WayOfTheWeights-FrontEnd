@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { linkes } from "./data/listLinks";
+import { limparSessaoUsuario } from "../../../services/limparSessaoUsuario";
 
 import { Container, Item } from "./styles";
 const Sidebar: React.FC = () => {
@@ -15,8 +16,8 @@ const Sidebar: React.FC = () => {
           </Link>
         </Item>
       ))}
-        <Item >
-          <Link to={'/'}>
+        <Item onClick={limparSessaoUsuario}>
+          <Link to={'..'}>
             <img src={'./assets/icons/sidebar-icons/logout.svg'} alt="gym"></img>
             <p>logout</p>
           </Link>
