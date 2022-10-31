@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -31,12 +31,18 @@ const EditarTreino: React.FC = () => {
     method: "get",
   });
 
+  
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-
+  
+  useEffect(() =>{
+    reset(dadosAntigos as TreinoUsuario);
+  },[dadosAntigos])
+  
   async function editar(body: object) {
     setIsCarregando(true);
     try {
@@ -64,7 +70,6 @@ const EditarTreino: React.FC = () => {
         <Input
           type="text"
           placeholder={"Titulo do Treino"}
-          defaultValue={dadosAntigos?.title}
           {...register("title", { required: true })}
         ></Input>
         {errors.title?.type === "required" && (
@@ -73,7 +78,6 @@ const EditarTreino: React.FC = () => {
         <Input
           type="text"
           placeholder={"Descricão do treino"}
-          defaultValue={dadosAntigos?.description}
           {...register("description", { required: true })}
         ></Input>
         {errors.description?.type === "required" && (

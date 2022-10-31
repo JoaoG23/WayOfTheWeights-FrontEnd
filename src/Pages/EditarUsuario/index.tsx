@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -24,6 +24,14 @@ const EditarUsuario: React.FC = () => {
   const [sucesso, setSucesso] = useState<SucessoResposta | null>(null);
   const [isCarregando, setIsCarregando] = useState(false);
   const [error, setError] = useState<any | null>(null);
+  
+    const {
+      register,
+      handleSubmit,
+      reset,
+      watch,
+      formState: { errors },
+    } = useForm();
 
   const {
     dados: dadosAntigos,
@@ -33,11 +41,12 @@ const EditarUsuario: React.FC = () => {
     method: "get",
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  useEffect(() =>{
+    reset(dadosAntigos as Usuario);
+  },[dadosAntigos])
+
+  const phoneValue = watch('phonenumber');
+  console.log(phoneValue);
 
   async function editar(body: object) {
     setIsCarregando(true);
@@ -55,7 +64,7 @@ const EditarUsuario: React.FC = () => {
       }, 3000);
     }
   }
-
+  
   return (
     <Container>
       <Form onSubmit={handleSubmit(async (body: object) => await editar(body))}>
@@ -66,8 +75,7 @@ const EditarUsuario: React.FC = () => {
         <Input
           type="text"
           placeholder={"Seu nome"}
-          defaultValue={dadosAntigos?.name}
-          {...register("name", { required: false })}
+          {...register("name", { required: true })}
         ></Input>
         {errors.name?.type === "required" && (
           <RedFont>Seu nome está vazio! Preencha por gentileza</RedFont>
@@ -75,8 +83,7 @@ const EditarUsuario: React.FC = () => {
         <Input
           type="text"
           placeholder={"Seu email"}
-          defaultValue={dadosAntigos?.email}
-          {...register("email", { required: false })}
+          {...register("email", { required: true })}
         ></Input>
         {errors.email?.type === "required" && (
           <RedFont>E-mail está vazio! Preencha por gentileza</RedFont>
@@ -84,8 +91,7 @@ const EditarUsuario: React.FC = () => {
         <Input
           type="text"
           placeholder={"Seu número de Telefone"}
-          defaultValue={dadosAntigos?.phonenumber}
-          {...register("phonenumber", { required: false })}
+          {...register("phonenumber", { required: true })}
         ></Input>
         {errors.phonenumber?.type === "required" && (
           <RedFont>Telefone está vazio! Preencha por gentileza</RedFont>
@@ -93,8 +99,7 @@ const EditarUsuario: React.FC = () => {
         <Input
           type="text"
           placeholder={"Seu Usuário para login"}
-          defaultValue={dadosAntigos?.userName}
-          {...register("userName", { required: false })}
+          {...register("userName", { required: true })}
         ></Input>
         {errors.userName?.type === "required" && (
           <RedFont>Seu usuário está vazio! Preencha por gentileza</RedFont>

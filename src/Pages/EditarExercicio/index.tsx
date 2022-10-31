@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { endpoint } from "../../services/endpoint";
 import { navegarAtePagina } from "../../services/navegarAtePagina";
@@ -20,6 +20,12 @@ import { ExerciciosUsuario } from "../../types/ExerciciosUsuario";
 
 const EditarExercicio: React.FC = () => {
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const { id } = useParams();
   const [sucessoEditar, setSucessoEditar] = useState<SucessoResposta | null>(
@@ -38,6 +44,12 @@ const EditarExercicio: React.FC = () => {
     method: "get",
   });
 
+  
+  useEffect(() =>{
+    reset(dadosAntigos as ExerciciosUsuario);
+  },[dadosAntigos])
+  
+
   // Pesos
   const {
     dados: pesos,
@@ -55,11 +67,6 @@ const EditarExercicio: React.FC = () => {
     sumirDepoisTempo(setErrorDadosAntigos);
   }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   async function editar(body: object) {
     setIsCarregandoEditar(true);
@@ -86,7 +93,6 @@ const EditarExercicio: React.FC = () => {
         </div>
         <Input
           type="text"
-          defaultValue={dadosAntigos?.description}
           placeholder={"Titulo do exercicio"}
           {...register("description", { required: true })}
         ></Input>
