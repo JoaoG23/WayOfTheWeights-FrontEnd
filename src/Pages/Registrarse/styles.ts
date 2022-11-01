@@ -16,7 +16,6 @@ export const Form = styled.form`
   @media only screen and (max-width: 768px) {
     padding: 0px;
     margin: 0px;
-    /* gap:1px;     */
   }
 
   a {
@@ -61,7 +60,6 @@ export const ContainerMain = styled.main`
   height: 100vh;
   width: 100vw;
 
-  /* z-index: 1; */
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -71,6 +69,8 @@ export const ContainerMain = styled.main`
   background-attachment:fixed;
   background-position: center;
   background-size: cover;
+  overflow-y: auto;
+
 
   position: fixed;
   top: 0;

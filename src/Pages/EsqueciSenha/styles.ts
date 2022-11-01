@@ -74,6 +74,8 @@ export const ContainerMain = styled.main`
   background-attachment:fixed;
   background-position: center;
   background-size: cover;
+  overflow-y: auto;
+
 
   position: fixed;
   top: 0;

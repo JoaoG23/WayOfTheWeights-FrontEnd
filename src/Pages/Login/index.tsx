@@ -103,7 +103,6 @@ const Login: React.FC = () => {
           </DarkButton>
         </RegisterContainer>
       </LoginContainer>
-        <img  src="./assets/img-login.jpg" alt="logo"></img>
     </ContainerMain>
   );
 };

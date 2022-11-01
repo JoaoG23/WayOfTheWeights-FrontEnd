@@ -35,7 +35,7 @@ Esse é um front-end de uma aplicação, voltada para academia e gestão de exer
 <img width="400px" src="https://media.tenor.com/XZdrFx3tLNgAAAAC/bricks-laying.gif">
 
 Não tive trabalhos para realizar essa aplicação tem uma, creio foi um dos melhores front-end que já criei, se não o melhor tirando algumas coisa inputs repitidos e não convertidos em componentes __Way of the Weights__ tem uma das melhores validação de dados de inputs que já creio, claro com
-o auxilio do **react hook form**, uma biblioteca excelente para tal.
+o auxilio do **react hook form**, uma biblioteca excelente para tal. Criei gráficos com Recharts. Troquei devido a antiga que usava não ter uma documentação muito boa.
 
 ### 👥 Principais Tecnologia usadas até o momento
 
@@ -66,6 +66,7 @@ Ahhh, mas você já vai ir embora 😢 ...
 
 Esse projeto foi voltado para o acompanhamento da evolução da força do Usuário que pratica algum esporte físico.
 O codigo foi melhorado ao máximo. Amei usar a biblioteca **React-hook-form** no front-end.
+
 
 ### Autor ✍🏻
 
