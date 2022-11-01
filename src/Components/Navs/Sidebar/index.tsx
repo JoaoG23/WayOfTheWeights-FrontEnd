@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 import { linkes } from "./data/listLinks";
 import { limparSessaoUsuario } from "../../../services/limparSessaoUsuario";
 
-import { Container, Item } from "./styles";
+import { Container, Item,Image } from "./styles";
 const Sidebar: React.FC = () => {
   return (
     <Container>
       {linkes.map((item) => (
         <Item key={item.id}>
           <Link to={item.path}>
-            <img src={item.icon} alt="gym"></img>
+            <Image src={item.icon} alt="gym"></Image>
             <p>{item.descricao}</p>
           </Link>
         </Item>
       ))}
         <Item onClick={limparSessaoUsuario}>
           <Link to={'..'}>
-            <img src={'./assets/icons/sidebar-icons/logout.svg'} alt="gym"></img>
+            <Image src={'./assets/icons/sidebar-icons/logout.svg'} alt="gym"></Image>
             <p>logout</p>
           </Link>
         </Item>

@@ -14,6 +14,9 @@ export const Container = styled.main`
     grid-auto-rows: 130px;
     grid-template-columns: auto  ;
   }
+  @media screen and (max-width: 426px ) {
+    grid-template-columns: 90vw;
+  }
 `;
 
 

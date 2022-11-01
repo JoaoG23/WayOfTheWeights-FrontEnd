@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
   box-shadow: 1px 1px 3px #636573;
-  border-radius: 1.4em;
+  border-radius: 2em;
   gap: 1em;
 
   display: flex;

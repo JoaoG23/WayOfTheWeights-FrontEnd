@@ -101,7 +101,6 @@ const AdicionarExercicio: React.FC = () => {
         )}
         <DarkButton>Salvar</DarkButton>
       </Form>
-
       {/* Resposta quanto adicionar */}
       {sucessoAdicionar && (
         <ModalSucesso>

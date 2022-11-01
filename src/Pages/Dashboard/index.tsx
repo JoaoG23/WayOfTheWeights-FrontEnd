@@ -1,5 +1,5 @@
 import Card from "../../Components/Card";
-import { Container } from "./styles";
+import { Container, ConteinerAumentoPeso } from "./styles";
 
 import { buscaDadoUsuarioNaSessao } from "../../services/buscaDadoUsuarioNaSessao";
 import { useFetch } from "../../services/api";
@@ -11,12 +11,13 @@ import ModalErro from "../../Components/Modais/ModalErro";
 
 const { idConvertido } = buscaDadoUsuarioNaSessao();
 const Dashboard = () => {
-  const { dados, isCarregando, error, setError } = useFetch<TreinamentoUsuarioLogado>(
-    `/api/statistics/lastexercice/${idConvertido}`,
-    {
-      method: "get",
-    }
-  );
+  const { dados, isCarregando, error, setError } =
+    useFetch<TreinamentoUsuarioLogado>(
+      `/api/statistics/lastexercice/${idConvertido}`,
+      {
+        method: "get",
+      }
+    );
 
   if (error) {
     sumirDepoisTempo(setError);
@@ -39,15 +40,17 @@ const Dashboard = () => {
         <img src="./assets/bikeBig.svg" alt="bike"></img>
       </Card>
       <Card>
-        <div>
-          <h2>Aumento de Peso</h2>
-          <img src="./assets/muscleBig.svg" alt="muscle"></img>
-        </div>
-        <div>
-          <h4>Foi de {dados?.pound} Kgs</h4>
-          <img src="./assets/up.svg" alt="ganho"></img>
-          <h5>Foi de {dados?.pound} Kgs</h5>
-        </div>
+        <ConteinerAumentoPeso>
+          <div>
+            <h2>Aumento de Peso</h2>
+            <img src="./assets/muscleBig.svg" alt="muscle"></img>
+          </div>
+          <div>
+            <h4>Foi de {dados?.pound} Kgs</h4>
+            <img src="./assets/up.svg" alt="ganho"></img>
+            <h5>Foi de {dados?.pound} Kgs</h5>
+          </div>
+        </ConteinerAumentoPeso>
       </Card>
       {isCarregando && <ModalCarregando />}
       {error && (

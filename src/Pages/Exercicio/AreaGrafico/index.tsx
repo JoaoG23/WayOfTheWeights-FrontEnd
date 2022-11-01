@@ -45,7 +45,7 @@ const AreaGrafico: React.FC<Props> = ({ userId, exerciceId }) => {
         </ModalErro>
       )}
       {isCarregando && <ModalCarregando />}
-      <ResponsiveContainer width="80%" aspect={1}>
+      <ResponsiveContainer width="80%" aspect={2}>
         <AreaChart
           width={500}
           height={400}

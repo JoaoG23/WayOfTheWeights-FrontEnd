@@ -41,6 +41,7 @@ export const ModalStyle = styled.div`
   padding: 1em;
 
   background-color: #DCFC34;
+  color:#000;
 
   border: none;
   border-radius: 25px;
@@ -48,5 +49,17 @@ export const ModalStyle = styled.div`
 
   @media screen and (max-width:769px) {
     width:90vw;
+  }
+`;
+export const AnimationLoading = styled.img`
+
+animation: rodandoPesos 0.5s infinite;
+@keyframes rodandoPesos {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
   }
 `;

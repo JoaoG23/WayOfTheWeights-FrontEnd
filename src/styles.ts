@@ -25,12 +25,12 @@ export const ImagePesos1Flutuante = styled.img`
   z-index: -2;
   position: fixed;
   right: 10vw;
-  animation: elevations 7s ease-in infinite alternate forwards;
+  animation: elevations 6s ease-in infinite alternate forwards;
 
   @media screen and (max-width: 769px) {
     left: 0vw;
     right: 0vw;
-    width: 95vw;
+    width: 80vw;
     margin: auto;
     justify-content: center;
   }
@@ -45,8 +45,15 @@ export const ImagePesos1Flutuante = styled.img`
   }
 `;
 export const ImagePesos2Flutuante = styled(ImagePesos1Flutuante)`
-  animation: elevations 10s 1s ease-in infinite alternate forwards;
+  animation: elevations 8s 1s ease-in infinite alternate forwards;
 
   top:10vh;
   right: 40vw;
+  @media screen and (max-width: 769px) {
+    left: 0vw;
+    right: 0vw;
+    width: 20vw;
+    margin: auto;
+    justify-content: center;
+  }
 `;

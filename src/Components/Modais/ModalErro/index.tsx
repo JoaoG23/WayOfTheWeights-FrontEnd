@@ -1,5 +1,5 @@
 import React from "react";
-import { ModalStyle, ModalBackgroundStyle } from "./styles";
+import { ModalStyle, ModalBackgroundStyle, AnimationErro } from "./styles";
 
 type Props = {
     children?: JSX.Element[] | JSX.Element;
@@ -11,8 +11,8 @@ const ModalErro :React.FC<Props> = ({
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                <img src="/assets/error.svg" alt="error"></img>
-                <h2>Ops! Há algo errado na operação</h2>
+                <AnimationErro src="/assets/error.svg" alt="error"/>
+                <h3>Ops! Há algo errado na operação</h3>
                 {children}
             </ModalStyle>
         </ModalBackgroundStyle>

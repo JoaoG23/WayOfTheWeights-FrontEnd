@@ -50,3 +50,19 @@ export const ModalStyle = styled.div`
     width:90vw;
   }
 `;
+
+export const AnimationErro = styled.img`
+
+animation: aparecendoErro 1s ease-out alternate forwards;
+@keyframes aparecendoErro {
+    0% {
+      transform: rotate(0deg) scale(0);
+    }
+    50% {
+      transform: rotate(-90deg) scale(1);
+    }
+    100% {
+      transform: rotate(0deg) scale(0.8);
+    }
+  }
+`;

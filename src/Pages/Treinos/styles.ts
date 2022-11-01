@@ -15,7 +15,10 @@ export const Container = styled.main`
     grid-template-columns: 1fr;
   }
   @media screen and (max-width: 800px ) {
-    grid-template-columns: auto ;
+    grid-template-columns:  auto;
+  }
+  @media screen and (max-width: 426px ) {
+    grid-template-columns: 90vw;
   }
 `;
 export const TextLimited = styled.h5`

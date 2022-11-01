@@ -1,5 +1,5 @@
 import React from "react";
-import { ModalStyle, ModalBackgroundStyle } from "./styles";
+import { ModalStyle, ModalBackgroundStyle, AnimationSucesso } from "./styles";
 
 type Props = {
     children?: JSX.Element[] | JSX.Element;
@@ -11,7 +11,7 @@ const ModalSucesso :React.FC<Props> = ({
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                <img src="/assets/success.svg" alt="success"></img>
+                <AnimationSucesso src="/assets/success.svg" alt="success"/>
                 <h3>Operação concluida com sucesso</h3>
                 {children}
             </ModalStyle>

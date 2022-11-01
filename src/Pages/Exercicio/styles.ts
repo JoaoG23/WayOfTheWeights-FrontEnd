@@ -12,8 +12,12 @@ export const Container = styled.main`
   animation: entradaSuave 0.8s;
   
   
+  
   @media screen and (max-width: 800px ) {
-    width: 70%;
+    grid-template-columns:  auto;
+  }
+  @media screen and (max-width: 426px ) {
+    grid-template-columns: 90vw;
   }
 
 `;
@@ -25,7 +29,7 @@ export const CardAzul = styled.div`
   align-items: center;
 
   padding: 1.5em;
-  border-radius: 1em;
+  border-radius: 2em;
   animation: entradaSuave 0.8s ease-out;
 
   @media screen and (max-width: 800px ) {
@@ -37,7 +41,7 @@ export const ContainerGrafico = styled.div`
   border:none;
 
   padding: 1.5em;
-  border-radius: .8em;
+  border-radius: 2em;
   background-color: #636573;
 
 

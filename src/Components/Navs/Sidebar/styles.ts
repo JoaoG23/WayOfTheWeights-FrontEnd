@@ -22,11 +22,20 @@ export const Container = styled.div`
     margin: 0px;
     width: 100vw;
     bottom: 0;
-    height: 80px;
+    height: 70px;
     z-index: 1;
     flex-direction: row;
   }
-`
+  `
+
+export const Image = styled.img`
+ @media only screen and (max-width: 768px) {
+   
+   width: 40px
+  }
+`;
+
+
 export const Item = styled.div`
     display: flex;
 
@@ -56,5 +65,5 @@ export const Item = styled.div`
     background-color: #0000003f;
     transform: translateX(1vw);
   }
-    
+}
 `

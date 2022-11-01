@@ -2,7 +2,7 @@
 
 <h1>WayOftheWeights-FRONT-END 🏋🏽‍♂️<h1>
 
-<img width='260px' src="./public/assets/logo.png" />
+<img width='260px' src="./assets/logo.png" />
 
 </div>
 
@@ -26,7 +26,7 @@
 
 <h2 id='introdução' color=green ><b>1 - Introdução</b></h2>
 
-Esse é um front-end de uma aplicação, voltada para academia e gestão de exercicios e treios, com foco na evolucão de ganhos de forca do usuário.
+Esse é um front-end de uma aplicação, voltada para academia e gestão de exercicios e treios, com foco na evolucão de ganhos de força do usuário.
 
 <img width="400px" src="https://media.tenor.com/fUUHTDw9pnsAAAAd/gym-fail-weak.gif">
 
@@ -54,11 +54,60 @@ o auxilio do **react hook form**, uma biblioteca excelente para tal. Criei gráf
 
 
 <h2 id='usar'><b>4- Como usar 👩‍💻</b></h2>
+<br/>
+<img width="500px" src="./assets/register.gif">
+
+1.  Registrar no app: Clique no botão registrar para criar sua conta.
+
+<br/>
+<br/>
+<img width="500px" src="./assets/dash.gif">
+
+2.	Login no App: Coloque seu usuário e senha para se logar.
+
+<br/>
+<br/>
+<img width="500px" src="./assets/senha.gif">
+
+3.	Esqueci minha senha: Caso aconteça clique em esqueci minha senha para criar uma nova.
+
+<br/>
+<br/>
+<img width="500px" src="./assets/dash.gif">
+
+4.	Tela inicial Dashboard: Onde está localizado os dados do último exercício.
+
+<br/>
+<br/>
+<img width="500px" src="./assets/treinos.gif">
+
+5.	Treinos do usuário: Nessa lista todos os treinos do usuário. Nela também poderá adicionar, deletar (caso não tenha um exercício), editar um treino e ao clicar no card poderá ver os exercícios daquele treino.
+
+<br/>
+<br/>
+<img width="500px" src="./assets/exercicios.gif">
+
+6.	Exercício do treino: Ao clicar em um treino, lista todos os exercícios daquele treino. Nela também poderá adicionar, deletar, editar um treino e ao clicar no card poderá ver os detalhes aquele exercício clicado.
+
+<br/>
+<br/>
+<img width="500px" src="./assets/umexercicio.gif">
+
+7.	Exercícios de demonstrativos evolução: Há quanto qual a carga que o usuário está carregando naquele momento. Abaixo haverá um gráfico demostrando à evolução as trocadas ao longo do tempo daquele exercício. Esse gráfico e alimentado pelos desde a criação do exercício até os futuros update é trocas de cargas efetuadas pelo usuário.
+
+<br/>
+
+8.	Pesos: Mostra alguns utilizados pela aplicação ao todo somente temos 250 Quilogramas, mas futuramente poderemos aumentar mais.
+
+<br/>
+<img width="500px" src="./assets/user.gif">
+
+9.	Área do Usuário: Essa área o usuário poderá mudar seus dados cadastrados anteriormente como queira.
+10.	Bom, o foco desse aplicativo é mensurar o ganho de força do usuário.
+<br/>
 
 <h3>👉🏽<a href='https://way-of-the-weights-front-end.vercel.app'>Clique aqui crie seu usuario para testar em tempo real</a></h3>
 
-
-Em breve ensinarei com usar.....
 
 <h2 id='consideraçoesfinais'><b>5 -🥺😭 Considerações finais</b></h2>
 
@@ -68,7 +117,8 @@ Esse projeto foi voltado para o acompanhamento da evolução da força do Usuár
 O codigo foi melhorado ao máximo. Amei usar a biblioteca **React-hook-form** no front-end.
 
 
-### Autor ✍🏻
+
+<h2 id='autor'><b>6- Autor ✍🏻</b></h2>
 
 ![avatar](https://images.weserv.nl/?url=https://avatars.githubusercontent.com/u/80895578?v=4?v=4&h=100&w=100&fit=cover&mask=circle&maxage=7d
 )

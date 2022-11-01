@@ -1,19 +1,18 @@
 import React from "react";
-import { ModalStyle, ModalBackgroundStyle } from "./styles";
+import { ModalStyle, ModalBackgroundStyle, AnimationLoading } from "./styles";
 
 type Props = {
     children?: JSX.Element[] | JSX.Element;
   }
   
-// const [estado, setEstado] = useState();
 
 const ModalCarregando :React.FC<Props> = ({
     children,
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                {/* <img src="./assets/erro.svg"></img> */}
-                <h2>Carregando .... </h2>
+                <AnimationLoading src="./assets/pesosCarregamento.svg" alt="loading"/>
+                <h4>Carregando .... </h4>
             </ModalStyle>
         </ModalBackgroundStyle>
 );
