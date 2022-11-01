@@ -26,7 +26,7 @@
 
 <h2 id='introdução' color=green ><b>1 - Introdução</b></h2>
 
-Esse é um front-end de uma aplicação, voltada para academia e gestão de exercicios e treios, com foco na evolucão de ganhos de força do usuário.
+Bom, eu criei um novo projeto ao voltado para treinos de academia, invés de ter sua ficha em papel, ela na verdade está em um software. Do modo que estou falando parece que nem existe no mercado 🤦🏽‍♂️😅😂. Mas enfim, ao longo das academias que eu passei, sentir uma falta funcionalidade gerenciamento de cargas e acompanhamento delas. Com base nisso criei está solução, que acompanha um gráfico simples de evolução da força do esportista ao longo do seu aumento de carga em Quilogramas. Como e visto abaixo.
 
 <img width="400px" src="https://media.tenor.com/fUUHTDw9pnsAAAAd/gym-fail-weak.gif">
 
