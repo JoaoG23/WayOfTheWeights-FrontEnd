@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  frontend:
+    build: "./"
+    container_name: frontend-way-of-weights-container
+    image: front-way-of-weights-image
+    volumes:
+      - ./build:/usr/share/nginx/html
+      - ./build:/nginx.config /etc/nginx/conf.d/default.conf
+    ports:
+      - "83:80"
+    environment:
+      - NGINX_HOST=wow.com
+      - NGINX_PORT=80
+    networks:
+      - way-of-weights-network
+networks:
+  way-of-weights-network:

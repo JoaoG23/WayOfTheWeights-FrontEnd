@@ -1,13 +1,14 @@
-import axios from 'axios';
+import axios from "axios";
 
-import { buscaDadoUsuarioNaSessao } from '../buscaDadoUsuarioNaSessao';
+import { buscaDadoUsuarioNaSessao } from "../buscaDadoUsuarioNaSessao";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const { tokenSessao } = buscaDadoUsuarioNaSessao();
 export const endpoint = axios.create({
-    baseURL: "https://way-of-the-weights-api.vercel.app",
-    // baseURL: "http://localhost:3000",
-    headers: {
-      "Content-type": "application/json",
-      'authorization-token':`${tokenSessao}`
-    },
+  baseURL: API_URL,
+  headers: {
+    "Content-type": "application/json",
+    "authorization-token": `${tokenSessao}`,
+  },
 });

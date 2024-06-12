@@ -12,7 +12,6 @@ import Header from "./Components/Navs/Header";
 
 function App() {
   return (
-    // <Provider >
     <>
       <>
         <ImagePesos1Flutuante src="./assets/pesoBackgroundBig.svg"></ImagePesos1Flutuante>
